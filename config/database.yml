@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: rztdb
+  username: <%= ENV["RZT_LOCAL_DB_USERNAME"] %>
+  password: <%= ENV["RZT_LOCAL_DB_PASSWORD"] %>
+
+test:
+  <<: *default
+  database: rztdbtest
+  username: <%= ENV["RZT_LOCAL_DB_USERNAME"] %>
+  password: <%= ENV["RZT_LOCAL_DB_PASSWORD"] %>
+
+
+production:
+  <<: *default
+  database: risa_for_creativity_production
+  username: <%= ENV["RZT_LOCAL_DB_USERNAME"] %>
+  password: <%= ENV["RZT_LOCAL_DB_PASSWORD"] %>
