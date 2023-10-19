@@ -1,0 +1,10 @@
+<body>
+
+<div class="content_container">
+  <ul>
+    <%- @contents.each do |c| %>
+      <li><a href="http://127.0.0.1:3000/contents/<%= "#{c.id}" %>" class="button"><%= "#{c.author} - #{c.name}" %></a></li>
+    <%- end %>
+  </ul>
+</div>
+</body>
