@@ -5,6 +5,7 @@ class ContentsController < ApplicationController
 
   def display
     @content = Content.find(params[:id])
+    @comment = Comment.new
   end
 
 end

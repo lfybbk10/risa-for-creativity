@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
 
+  # Используем ресурсы для комментариев
+  resources :comments, only: [:new, :create]
+
 
 
   resources :users
   resources :contents, param: :id
+
 end
