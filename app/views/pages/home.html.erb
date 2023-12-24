@@ -1,5 +1,14 @@
 <div class="center jumbotron main_container">
   <%= image_tag "logo.png" %>
   <h1 class="main_h">РЗТ</h1>
-  <%= link_to "Зарегистрируйтесь сейчас!", signup_path, class: "btn btn-lg content_btn" %>
+
+  <% if current_user %>
+    <%= link_to "Мой профиль", user_path(current_user), class: "btn btn-lg content_btn" %>
+    <%= link_to "Выйти из аккаунта", logout_path, method: :delete, class: "btn btn-lg content_btn", data: { confirm: "Вы уверены?" } %>
+  <% else %>
+    <%= link_to "Зарегистрируйтесь сейчас!", signup_path, class: "btn btn-lg content_btn" %>
+    <%= link_to "Войдите", login_path, class: "btn btn-lg content_btn" %>
+  <% end %>
+
+  <%= link_to "Смотреть контент", content_path, class: "btn btn-lg content_btn" %>
 </div>

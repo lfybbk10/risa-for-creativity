@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
 
+  get 'logout' => 'sessions#destroy', as: :logout # Используем GET для выхода из аккаунта
+
+
   # Используем ресурсы для комментариев
   resources :comments, only: [:new, :create]
 

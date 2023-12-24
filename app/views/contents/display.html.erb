@@ -3,6 +3,15 @@
 
 <div class="content_container">
   <h1><%= "#{@content.author} - #{@content.name}" %></h1>
+  <% if @comments.any? %>
+    <h2>Comments</h2>
+    <ul>
+      <% @comments.each do |comment| %>
+        <li><strong>User:</strong> <%= comment.user_id %>, <strong>Text:</strong> <%= comment.text %>, <strong>Rating:</strong> <%= comment.rating %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p><strong>Average Rating:</strong> <%= average_rating(@comments) %></p>
   <h1>Create a Comment</h1>
 
   <%= form_with(model: @comment, url: comments_path, method: :post) do |form| %>
@@ -12,6 +21,12 @@
       <%= form.label :text %>
       <%= form.text_area :text, rows: 4, required: true %>
     </div>
+
+    <div>
+      <%= form.label :rating %>
+      <%= form.text_area :rating, rows: 1, required: true %>
+    </div>
+
 
     <div>
       <%= form.submit 'Submit' %>
