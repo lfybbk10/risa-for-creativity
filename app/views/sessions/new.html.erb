@@ -1,24 +1,115 @@
 <% provide(:title, "Войти") %>
-<h1 class="h_spacing">Войти</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Войти</title>
+  <style>
+      body {
+          background-color: #f4f4f4;
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          padding: 0;
+      }
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+      .h_spacing {
+          text-align: center;
+          color: #4285f4;
+      }
 
-      <%= f.label :email, "Почта"  %>
-      <%= f.email_field :email, class: 'form-control' %>
+      .form-container {
+          background-color: #ffffff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          width: 80%;
+          max-width: 400px;
+          margin: auto;
+      }
 
-      <%= f.label :password, "Пароль" %>
-      <%= f.password_field :password, class: 'form-control' %>
+      label {
+          display: block;
+          margin-top: 10px;
+      }
 
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me%>
-        <span>Запомнить на этом устройстве</span>
+      input[type="email"],
+      input[type="password"],
+      input[type="submit"] {
+          width: 100%;
+          padding: 10px;
+          margin-top: 8px;
+          margin-bottom: 8px;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+
+      .checkbox {
+          display: flex;
+          align-items: center;
+          margin-top: 8px;
+      }
+
+      .checkbox input[type="checkbox"] {
+          margin-right: 5px;
+      }
+
+      .btn {
+          background-color: #4285f4;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin-top: 10px;
+          cursor: pointer;
+          width: 100%;
+      }
+
+      p {
+          text-align: center;
+      }
+
+      a {
+          color: #4285f4;
+          text-decoration: none;
+      }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h1 class="h_spacing">Войти</h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.label :email, "Почта"  %>
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.label :password, "Пароль" %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span>Запомнить на этом устройстве</span>
+        <% end %>
+
+        <%= f.submit "Войти", class: "btn content_btn submit_btn" %>
       <% end %>
 
-      <%= f.submit "Войти", class: "btn content_btn submit_btn" %>
-    <% end %>
-
-    <p>Новый пользователь? <%= link_to "Зарегистрируйтесь сейчас!", signup_path %></p>
+      <p>Новый пользователь? <%= link_to "Зарегистрируйтесь сейчас!", signup_path %></p>
+    </div>
   </div>
 </div>
+
+</body>
+</html>

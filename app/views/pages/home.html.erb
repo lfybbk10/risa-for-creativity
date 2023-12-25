@@ -74,11 +74,11 @@
 
   <div class="content-container">
     <% if current_user %>
-      <a href="<%= edit_user_path(current_user) %>" class="btn btn-lg content-btn">Мой профиль</a>
+      <a href="<%= user_path(current_user) %>" class="btn btn-lg content-btn">Мой профиль</a>
       <a href="<%= logout_path %>" data-confirm="Вы уверены?" data-method="delete" class="btn btn-lg content-btn">Выйти из аккаунта</a>
     <% else %>
       <a href="<%= signup_path %>" class="btn btn-lg content-btn">Зарегистрируйтесь сейчас!</a>
-      <a href="#" class="btn btn-lg content-btn" data-toggle="modal" data-target="#loginModal">Войдите</a>
+      <a href="<%= login_path %>" class="btn btn-lg content-btn">Войти</a>
     <% end %>
 
     <a href="<%= content_path %>" class="btn btn-lg content-btn">Смотреть контент</a>
