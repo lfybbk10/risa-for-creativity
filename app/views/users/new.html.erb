@@ -1,22 +1,98 @@
-<% provide(:title,"Регистрация") %>
-<h1 class="h_spacing">Регистрация</h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :username, "Логин" %>
-      <%= f.text_field :username, class: 'form-control' %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      .container {
+          max-width: 600px;
+          margin: 50px auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+          text-align: center;
+          color: #4285f4;
+      }
+      label {
+          color: #4285f4;
+          display: block;
+          margin: 5px 0;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          margin: 5px 0 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+      input[type="submit"] {
+          background-color: #4285f4;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-top: 10px;
+      }
+      input[type="submit"]:hover {
+          background-color: #1356dd;
+      }
 
-      <%= f.label :email, "Почта" %>
-      <%= f.email_field :email, class: 'form-control' %>
+      .btn-back {
+          position: -ms-device-fixed;
+          bottom: 5px;
+          right: 5px;
+          padding: 6px 15px;
+          border: 2px solid #4285f4;
+          border-radius: 8px;
+          text-decoration: none;
+          color: #4285f4;
+          transition: all 0.3s ease;
+      }
 
-      <%= f.label :password, "Пароль" %>
-      <%= f.password_field :password, class: 'form-control' %>
+      .btn-back:hover {
+          background-color: #4285f4;
+          color: #fff;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <%= form_for(@user) do |f| %>
+    <h1>Регистрация</h1>
 
-      <%= f.label :password_confirmation, "Подтвердите пароль"%>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.submit "Создать аккаунт", class: "btn content_btn submit_btn"%>
-    <% end %>
-  </div>
+    <%= f.label :username, "Логин" %>
+    <%= f.text_field :username, class: 'form-control' %>
+
+    <%= f.label :email, "Почта" %>
+    <%= f.email_field :email, class: 'form-control' %>
+
+    <%= f.label :password, "Пароль" %>
+    <%= f.password_field :password, class: 'form-control' %>
+
+    <%= f.label :password_confirmation, "Подтвердите пароль"%>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+    <%= f.submit "Создать аккаунт", class: "btn content_btn submit_btn"%>
+    <a href="/" class="btn-back">Назад</a>
+  <% end %>
 </div>
+</body>
+</html>
