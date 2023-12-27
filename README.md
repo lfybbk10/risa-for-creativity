@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+"Риса за творчество" - проект для оценки музыкальных композиций.
 
-Things you may want to cover:
+Какой функционал реализован:
 
-* Ruby version
+* Регистрация, логин
 
-* System dependencies
+* Страница с контентом
 
-* Configuration
+* Возможность оставлять комментарии с текстом и оценкой под каждым треком
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Подсчёт среднего рейтинга каждой композиции
