@@ -12,6 +12,10 @@ class CommentsController < ApplicationController
 
     where = comments.where(user_id: @comment.user_id)
 
+    if check_integer(@comment.rating) && (@comment.rating < 0 || @comment.rating > 10)
+      return
+    end
+
     if where.size > 0
       return
     end
@@ -25,6 +29,15 @@ class CommentsController < ApplicationController
 
 
   private
+
+  def check_integer(value)
+    begin
+      Integer(value)
+      return true
+    rescue ArgumentError
+      return false
+    end
+  end
 
   def comment_params
     params.require(:comment).permit(:content_id, :user_id, :text, :rating)
