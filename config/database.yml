@@ -19,6 +19,4 @@ test:
 
 production:
   <<: *default
-  database: risa_for_creativity_production
-  username: <%= ENV["RZT_LOCAL_DB_USERNAME"] %>
-  password: <%= ENV["RZT_LOCAL_DB_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
