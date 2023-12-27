@@ -8,6 +8,13 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id if logged_in?
 
+    comments = Comment.where(content_id: @comment.content_id)
+
+    where = comments.where(user_id: @comment.user_id)
+
+    if where.size > 0
+      return
+    end
 
     if @comment.save
       redirect_back fallback_location: root_path, notice: 'Комментарий успешно сохранен в базе данных'
@@ -15,6 +22,7 @@ class CommentsController < ApplicationController
       render :new
     end
   end
+
 
   private
 

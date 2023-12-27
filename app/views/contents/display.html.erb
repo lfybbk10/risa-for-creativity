@@ -1,36 +1,120 @@
-<% provide(:id, @content.id) %>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+      }
 
+      .content_container {
+          width: 90%;
+          max-width: 600px;
+          padding: 20px;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          margin-top: 20px;
+      }
+
+      h1, h2 {
+          color: #4285f4;
+          text-align: center;
+      }
+
+      ul {
+          list-style: none;
+          padding: 0;
+      }
+
+      li {
+          margin-bottom: 20px;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 10px;
+      }
+
+      label, input, textarea, form {
+          display: block;
+          margin-bottom: 10px;
+          width: 100%;
+      }
+
+      input[type="submit"] {
+          width: 100%;
+          background-color: #4285f4;
+          color: #ffffff;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      input[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+          .content_container {
+              max-width: 90%;
+          }
+      }
+
+      a.button {
+          display: block;
+          padding: 8px;
+          background-color: #4285f4;
+          color: #ffffff;
+          text-decoration: none;
+          text-align: center;
+          border-radius: 4px;
+          transition: background-color 0.3s ease;
+      }
+
+  </style>
+  <title>Отображение музыкального трека и комментариев</title>
+</head>
+<body>
 <div class="content_container">
   <h1><%= "#{@content.author} - #{@content.name}" %></h1>
+  <p><strong>Average Rating:</strong> <%= average_rating(@comments) %></p>
   <% if @comments.any? %>
     <h2>Comments</h2>
     <ul>
       <% @comments.each do |comment| %>
-        <li><strong>User:</strong> <%= comment.user_id %>, <strong>Text:</strong> <%= comment.text %>, <strong>Rating:</strong> <%= comment.rating %></li>
+        <li>
+          <strong>Author:</strong> <%= User.find(comment.user_id).username %><br>
+          <strong>Text:</strong> <%= comment.text %><br>
+          <strong>Rating:</strong> <%= comment.rating %>
+          <% unless comment == @comments.last %><hr><% end %>
+        </li>
       <% end %>
     </ul>
   <% end %>
-  <p><strong>Average Rating:</strong> <%= average_rating(@comments) %></p>
   <h1>Create a Comment</h1>
-
   <%= form_with(model: @comment, url: comments_path, method: :post) do |form| %>
     <%= form.hidden_field :content_id, value: @content.id %>
-
     <div>
       <%= form.label :text %>
       <%= form.text_area :text, rows: 4, required: true %>
     </div>
-
     <div>
       <%= form.label :rating %>
       <%= form.text_area :rating, rows: 1, required: true %>
     </div>
-
-
     <div>
-      <%= form.submit 'Submit' %>
+      <%= form.submit 'Отправить' %>
+      <a href="http://127.0.0.1:3000/" class="button" style="margin: 20px 0;">Назад</a>
     </div>
   <% end %>
 </div>
 </body>
+</html>
