@@ -14,7 +14,9 @@
     "parcel": "^2.8.2"
   },
   "scripts": {
+    "build": "parcel build app/javascript/application.js --dist-dir app/assets/builds/",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "watch": "parcel app/javascript/application.js --dist-dir app/assets/builds/",
     "watch:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --watch"
   }
 }
